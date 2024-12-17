@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/perfiles/alumno"></ion-back-button> <!-- O la ruta de tu elección -->
+    </ion-buttons>
+    <ion-title>docente-qrcode</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">scan-qr</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="qr-scan-area">
+    <zxing-scanner *ngIf="!hasResult"
+      (scanSuccess)="onCodeResult($event)" 
+      (permissionResponse)="hasPermission = $event">
+    </zxing-scanner>
+  
+    <div *ngIf="qrResult">
+      <h3>Resultado del Escaneo:</h3>
+      <p>{{ qrResult }}</p>
+    </div>
+  
+    <div *ngIf="!hasPermission">
+      <p>Por favor, permite el acceso a la cámara.</p>
+    </div>
+
+    <div>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+  
+</ion-content>

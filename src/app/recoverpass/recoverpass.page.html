@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button> <!-- Botón de retroceso -->
+    </ion-buttons>
+    <ion-title>Recuperación de Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="centrado">Recupera tu contraseña</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <app-recoverpass1 *ngIf="view" 
+                      (emailEmitter)="getEmailEmitted($event)" 
+                      (codeEmitter)="getCodeEmitted($event)"></app-recoverpass1>
+
+    <app-recoverpass2 *ngIf="!view" 
+                      [code]="createdCode" [email]="oldEmail"></app-recoverpass2>
+  </div>
+</ion-content>

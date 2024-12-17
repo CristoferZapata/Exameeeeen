@@ -1,0 +1,7 @@
+{
+  "name": "AssistanceManager",
+  "type": "angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
